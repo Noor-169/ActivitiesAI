@@ -26,10 +26,10 @@ You work iteratively: starting simple and small, receiving feedback and/or more 
 - **Never assume missing context. Ask questions if uncertain.**
 - **Never hallucinate libraries or functions** – only use known, verified packages.
 - **Always confirm file paths and module names** exist before referencing them in code or tests.
-- **Never delete or overwrite existing code** unless explicitly instructed to or if part of a task from `TASK.md`.
+- **Never delete or overwrite existing code** unless explicitly instructed to or if part of a task from `task.md`.
 
 ### 🔄 Project Awareness & Context
 
 - ** Always read `claude.md` ** at the start of a new conversation to understand the context of what we're doing.
-- **Always read `PLANNING.md`** at the start of a new conversation to understand the project's architecture, goals, style, and constraints.
-- **Check `TASK.md`** before starting a new task. If the task isn’t listed, add it with a brief description and today's date.
+- **Always read `planning.md`** at the start of a new conversation to understand the project's architecture, goals, style, and constraints.
+- **Check `task.md`** before starting a new task. If the task isn’t listed, add it with a brief description and today's date.

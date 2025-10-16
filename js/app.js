@@ -120,7 +120,86 @@ function formatActivityType(type) {
 }
 
 /**
- * Displays an activity in the UI
+ * Creates DOM elements programmatically (alternative approach)
+ * @param {Object} activity - Activity object to display
+ * @returns {DocumentFragment} DOM fragment with activity elements
+ */
+function createActivityElementsProgrammatically(activity) {
+    const fragment = document.createDocumentFragment();
+    
+    // Create title element
+    const titleElement = document.createElement('div');
+    titleElement.className = 'activity-title';
+    titleElement.textContent = activity.title;
+    fragment.appendChild(titleElement);
+    
+    // Create details container
+    const detailsElement = document.createElement('div');
+    detailsElement.className = 'activity-details';
+    
+    // Create duration badge
+    const durationBadge = document.createElement('span');
+    durationBadge.className = 'activity-badge activity-badge--duration';
+    durationBadge.textContent = formatDuration(activity.duration);
+    detailsElement.appendChild(durationBadge);
+    
+    // Create type badge
+    const typeBadge = document.createElement('span');
+    typeBadge.className = 'activity-badge activity-badge--type';
+    typeBadge.textContent = formatActivityType(activity.type);
+    detailsElement.appendChild(typeBadge);
+    
+    fragment.appendChild(detailsElement);
+    
+    // Add description if available
+    if (activity.description) {
+        const descriptionElement = document.createElement('p');
+        descriptionElement.className = 'activity-description';
+        descriptionElement.textContent = activity.description;
+        fragment.appendChild(descriptionElement);
+    }
+    
+    return fragment;
+}
+
+/**
+ * Creates activity elements using HTML template cloning (preferred approach)
+ * @param {Object} activity - Activity object to display
+ * @returns {DocumentFragment} Cloned and populated template
+ */
+function createActivityElementsFromTemplate(activity) {
+    const template = document.getElementById('activity-template');
+    if (!template) {
+        console.warn('Activity template not found, falling back to programmatic creation');
+        return createActivityElementsProgrammatically(activity);
+    }
+    
+    // Clone the template content
+    const clone = template.content.cloneNode(true);
+    
+    // Populate the cloned elements
+    const titleElement = clone.querySelector('.activity-title');
+    const durationBadge = clone.querySelector('.activity-badge--duration');
+    const typeBadge = clone.querySelector('.activity-badge--type');
+    const descriptionElement = clone.querySelector('.activity-description');
+    
+    // Set content using textContent for security
+    titleElement.textContent = activity.title;
+    durationBadge.textContent = formatDuration(activity.duration);
+    typeBadge.textContent = formatActivityType(activity.type);
+    
+    // Handle optional description
+    if (activity.description) {
+        descriptionElement.textContent = activity.description;
+    } else {
+        descriptionElement.remove();
+    }
+    
+    return clone;
+}
+
+/**
+ * Displays an activity in the UI using DOM manipulation
  * @param {Object} activity - Activity object to display
  */
 function displayActivity(activity) {
@@ -134,21 +213,14 @@ function displayActivity(activity) {
     elements.errorMessage.hidden = true;
     elements.loadingMessage.hidden = true;
     
-    // Build activity HTML
-    const activityHTML = `
-        <div class="activity-title">${activity.title}</div>
-        <div class="activity-details">
-            <span class="activity-badge activity-badge--duration">
-                ${formatDuration(activity.duration)}
-            </span>
-            <span class="activity-badge activity-badge--type">
-                ${formatActivityType(activity.type)}
-            </span>
-        </div>
-        ${activity.description ? `<p class="activity-description">${activity.description}</p>` : ''}
-    `;
+    // Clear existing content
+    elements.activityContent.replaceChildren();
     
-    elements.activityContent.innerHTML = activityHTML;
+    // Create and append new activity elements using template approach
+    const activityElements = createActivityElementsFromTemplate(activity);
+    elements.activityContent.appendChild(activityElements);
+    
+    // Update app state
     appState.currentActivity = activity;
     
     // Announce to screen readers

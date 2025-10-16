@@ -12,8 +12,43 @@ A lightweight activity suggestion app that helps you discover fun activities and
 ## Quick Start
 
 1. Clone or download this repository
-2. Open `index.html` in your web browser
-3. Start discovering activities!
+2. Set up a local server (required for ES6 modules):
+
+   **Option 1: Python (if installed)**
+
+   ```bash
+   # Python 3
+   python -m http.server 8000
+
+   # Python 2
+   python -m SimpleHTTPServer 8000
+   ```
+
+   **Option 2: Node.js (if installed)**
+
+   ```bash
+   # Install a simple server globally
+   npm install -g http-server
+
+   # Run the server
+   http-server -p 8000
+   ```
+
+   **Option 3: PHP (if installed)**
+
+   ```bash
+   php -S localhost:8000
+   ```
+
+   **Option 4: Live Server Extension (VS Code)**
+
+   - Install the "Live Server" extension
+   - Right-click on `index.html` and select "Open with Live Server"
+
+3. Open your browser and navigate to `http://localhost:8000`
+4. Start discovering activities!
+
+> **Note**: A local server is required because the app uses ES6 modules, which browsers block when loading files directly due to CORS security restrictions.
 
 ## Technology Stack
 
@@ -33,15 +68,19 @@ A lightweight activity suggestion app that helps you discover fun activities and
 ```
 ActivityAI/
 ├── index.html          # Main application page
+├── README.md           # Project documentation
+├── TASK.md             # Development task tracking
+├── claude.md           # Claude AI interaction history
+├── initial.md          # Initial project planning
+├── planning.md         # Project planning documentation
 ├── css/
 │   └── styles.css      # Application styles
 ├── js/
 │   ├── app.js          # Main application logic
 │   ├── storage.js      # Data loading and management
 │   └── filters.js      # Activity filtering functionality
-├── data/
-│   └── activities.json # Activity database
-└── README.md           # This file
+└── data/
+    └── activities.json # Activity database
 ```
 
 ## Development
