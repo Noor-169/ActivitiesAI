@@ -1,6 +1,6 @@
 <template>
   <section class="activity-section" aria-labelledby="activity-heading">
-    <h2 id="activity-heading">Your Activity Suggestion</h2>
+    <h2 id="activity-heading"></h2>
     
     <div 
       class="activity-card" 
@@ -11,7 +11,7 @@
       <!-- Loading State -->
       <div v-if="isLoading" class="activity-content">
         <div class="loading-message" role="status" aria-live="polite">
-          <p>Finding the perfect activity for you...</p>
+          <p>Zoekt...</p>
         </div>
       </div>
 
@@ -32,18 +32,18 @@
           <span class="activity-badge activity-badge--type">
             {{ formatActivityType(activity.type) }}
           </span>
-          <span 
+          <!-- <span 
             v-if="activity.difficulty" 
             class="activity-badge activity-badge--difficulty"
           >
             {{ formatDifficulty(activity.difficulty) }}
-          </span>
+          </span> -->
         </div>
         <p v-if="activity.description" class="activity-description">
           {{ activity.description }}
         </p>
         <div v-if="activity.materials && activity.materials.length > 0" class="activity-materials">
-          <strong>Materials needed:</strong>
+          <strong>wat heb je nodig:</strong>
           <ul>
             <li v-for="material in activity.materials" :key="material">
               {{ material }}
@@ -55,7 +55,7 @@
       <!-- Welcome State -->
       <div v-else class="activity-content">
         <div class="welcome-message">
-          <p>Click "Get Activity" to discover something to do!</p>
+          <p>Klik hieronder voor een suggestie</p>
         </div>
       </div>
     </div>
@@ -68,7 +68,7 @@
       :aria-describedby="buttonDescription"
       @click="handleGetActivity"
     >
-      {{ isLoading ? 'Loading...' : 'Get Activity' }}
+      {{ isLoading ? 'Loading...' : 'Geef me iets te doen!' }}
     </button>
     <span id="button-description" class="sr-only">
       Generate a new activity suggestion based on your current filters
@@ -118,9 +118,9 @@ const buttonDescription = computed(() => {
 })
 
 // Helper functions
-const formatDifficulty = (difficulty: string): string => {
-  return difficulty.charAt(0).toUpperCase() + difficulty.slice(1)
-}
+// const formatDifficulty = (difficulty: string): string => {
+//   return difficulty.charAt(0).toUpperCase() + difficulty.slice(1)
+// }
 
 // Event handlers
 const handleGetActivity = (): void => {
@@ -137,20 +137,34 @@ const handleGetActivity = (): void => {
 }
 
 .activity-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  margin: 1.5rem 0;
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-gray-200);
+  text-align: center;
+  margin-bottom: var(--space-6);
   min-height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-base);
+}
+
+.activity-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
 }
 
 .activity-card:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-lg);
 }
 
 .activity-content {
@@ -158,54 +172,52 @@ const handleGetActivity = (): void => {
 }
 
 .activity-title {
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: #2c3e50;
-  margin-bottom: 1rem;
-  line-height: 1.3;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-dark);
+  margin-bottom: var(--space-4);
+  line-height: var(--line-height-tight);
 }
 
 .activity-details {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: var(--space-4);
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .activity-badge {
-  background: #e8f4f8;
-  color: #2c5282;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  border: 1px solid #bee3f8;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-gray-100);
+  color: var(--color-gray-700);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
 }
 
 .activity-badge--duration {
-  background: #e6fffa;
-  color: #234e52;
-  border-color: #81e6d9;
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
 }
 
 .activity-badge--type {
-  background: #fef5e7;
-  color: #744210;
-  border-color: #f6e05e;
+  background: var(--color-secondary-light);
+  color: var(--color-secondary-dark);
 }
 
 .activity-badge--difficulty {
-  background: #fed7d7;
-  color: #742a2a;
-  border-color: #fc8181;
+  background: var(--color-accent-light);
+  color: var(--color-accent-dark);
 }
 
 .activity-description {
-  font-size: 1.1rem;
-  color: #4a5568;
-  line-height: 1.6;
-  margin-bottom: 1rem;
+  color: var(--color-gray-600);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: 0;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -239,8 +251,9 @@ const handleGetActivity = (): void => {
 }
 
 .welcome-message {
-  color: #718096;
-  font-size: 1.2rem;
+  color: var(--color-gray-500);
+  font-size: var(--font-size-xl);
+  font-style: italic;
 }
 
 .loading-message {
@@ -260,22 +273,30 @@ const handleGetActivity = (): void => {
 }
 
 .button {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-16);
+  margin: var(--space-8) 0; /* Added margin around the button */
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  border-radius: var(--radius-xl);
+  border: 2px solid transparent;
   cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: none;
-  min-width: 160px;
+  text-decoration: none;
+  transition: var(--transition-colors), transform 150ms ease-in-out;
+  min-height: 44px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: var(--color-white);
+  box-shadow: var(--shadow-lg);
 }
 
 .button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg), 0 0 20px rgba(74, 144, 226, 0.3);
 }
 
 .button:active:not(:disabled) {
@@ -283,10 +304,16 @@ const handleGetActivity = (): void => {
 }
 
 .button:disabled {
-  background: #a0aec0;
+  background: var(--color-gray-400);
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
 }
 
 .sr-only {
@@ -302,6 +329,15 @@ const handleGetActivity = (): void => {
 }
 
 /* Responsive Design */
+/* Medium devices (tablets, 768px and up) - Enhancement for larger screens */
+@media (min-width: 48rem) {
+  .activity-card {
+    padding: var(--space-12);
+    min-height: 240px;
+  }
+}
+
+/* Mobile devices (smaller screens) - Reduction for mobile */
 @media (max-width: 768px) {
   .activity-card {
     padding: 1.5rem;

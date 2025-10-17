@@ -1,16 +1,51 @@
 <template>
   <section class="filters-section" aria-labelledby="filters-heading">
-    <h2 id="filters-heading">Filter Activities</h2>
-    
-    <form 
-      class="activity-filters" 
-      role="search" 
-      aria-label="Activity filters"
-      @submit.prevent
+    <button 
+      type="button"
+      id="filters-heading"
+      class="filters-header"
+      :aria-expanded="isOpen"
+      aria-controls="filters-content"
+      :aria-label="`${isOpen ? 'Verberg' : 'Toon'} filteropties`"
+      @click="toggleFilters"
     >
+      <div class="header-content">
+        <h2>Voorkeuren</h2>
+        <span 
+          v-if="!isOpen && hasActiveFilters" 
+          class="active-filters-badge"
+          :aria-label="`${activeFiltersCount} actieve filter${activeFiltersCount > 1 ? 's' : ''}`"
+        >
+          {{ activeFiltersCount }}
+        </span>
+      </div>
+      <svg 
+        class="chevron-icon"
+        :class="{ 'chevron-rotated': isOpen }"
+        width="20" 
+        height="20" 
+        viewBox="0 0 20 20" 
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+      </svg>
+    </button>
+    
+    <div 
+      id="filters-content"
+      class="filters-content"
+      :class="{ 'filters-open': isOpen }"
+    >
+      <form 
+        class="activity-filters" 
+        role="search" 
+        aria-label="Activity filters"
+        @submit.prevent
+      >
       <!-- Duration Filter -->
       <fieldset class="filter-group">
-        <legend>Duration</legend>
+        <legend>Tijd</legend>
         <div class="filter-options" role="group" aria-labelledby="duration-legend">
           <label 
             v-for="option in durationOptions" 
@@ -35,7 +70,7 @@
 
       <!-- Activity Type Filter -->
       <fieldset class="filter-group">
-        <legend>Activity Type</legend>
+        <legend>Type</legend>
         <div class="filter-options" role="group" aria-labelledby="type-legend">
           <label 
             v-for="option in typeOptions" 
@@ -61,7 +96,7 @@
       <!-- Filter Summary & Actions -->
       <div class="filter-summary">
         <p class="available-count" role="status" aria-live="polite">
-          {{ availableCount }} {{ availableCount === 1 ? 'activity' : 'activities' }} available
+          {{ availableCount }} {{ availableCount === 1 ? 'activiteit' : 'activiteiten' }} beschikbaar
         </p>
         
         <div class="filter-actions">
@@ -71,22 +106,26 @@
             :aria-describedby="resetDescription"
             @click="handleReset"
           >
-            Reset Filters
+            Filters resetten
           </button>
           <span id="reset-description" class="sr-only">
-            Clear all filters and show all activities
+            Zonder filters
           </span>
         </div>
       </div>
     </form>
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import type { ActivityFilters } from '../types/Filters'
 import type { ActivityType, DurationRange } from '../types/Activity'
 import type { Activity } from '../types/Activity'
+
+// Collapsible state
+const isOpen = ref(false)
 
 // Component Props
 interface Props {
@@ -112,11 +151,11 @@ const emit = defineEmits<Emits>()
 // Duration filter options
 const durationOptions = computed(() => {
   const baseOptions = [
-    { value: 'any' as DurationRange, label: 'Any duration' },
-    { value: 'short' as DurationRange, label: 'Short (1-15 min)' },
-    { value: 'standard' as DurationRange, label: 'Standard (15-30 min)' },
-    { value: 'long' as DurationRange, label: 'Long (30-60 min)' },
-    { value: 'extended' as DurationRange, label: 'Extended (60+ min)' }
+    { value: 'any' as DurationRange, label: 'Elke tijdsduur' },
+    { value: 'short' as DurationRange, label: 'Kort (1-15 min)' },
+    { value: 'standard' as DurationRange, label: 'Standaard (15-30 min)' },
+    { value: 'long' as DurationRange, label: 'Lang (30-60 min)' },
+    { value: 'extended' as DurationRange, label: 'Dagdeel en meer (60+ min)' }
   ]
 
   // Add counts if activities are provided
@@ -129,15 +168,15 @@ const durationOptions = computed(() => {
     }))
   }
 
-  return baseOptions
+  return baseOptions.map(option => ({ ...option, count: undefined }))
 })
 
 // Type filter options
 const typeOptions = computed(() => {
   const baseOptions = [
-    { value: 'any' as ActivityType | 'any', label: 'Any type' },
-    { value: 'fun' as ActivityType, label: 'Fun activities' },
-    { value: 'chores' as ActivityType, label: 'Productive tasks' }
+    { value: 'any' as ActivityType | 'any', label: 'Elk type' },
+    { value: 'fun' as ActivityType, label: 'Vermaak' },
+    { value: 'chores' as ActivityType, label: 'Productieve taakjes' }
   ]
 
   // Add counts if activities are provided
@@ -150,7 +189,7 @@ const typeOptions = computed(() => {
     }))
   }
 
-  return baseOptions
+  return baseOptions.map(option => ({ ...option, count: undefined }))
 })
 
 // Helper functions to count activities
@@ -194,10 +233,26 @@ const handleReset = (): void => {
   emit('reset')
 }
 
+// Toggle dropdown function
+const toggleFilters = (): void => {
+  isOpen.value = !isOpen.value
+}
+
+// Active filters tracking
+const hasActiveFilters = computed(() => {
+  return props.filters.duration !== 'any' || props.filters.type !== 'any'
+})
+
+const activeFiltersCount = computed(() => {
+  let count = 0
+  if (props.filters.duration !== 'any') count++
+  if (props.filters.type !== 'any') count++
+  return count
+})
+
 // Reset description for accessibility
 const resetDescription = computed(() => {
-  const hasActiveFilters = props.filters.duration !== 'any' || props.filters.type !== 'any'
-  return hasActiveFilters 
+  return hasActiveFilters.value 
     ? 'Clear all active filters and show all activities'
     : 'All filters are already cleared'
 })
@@ -205,18 +260,88 @@ const resetDescription = computed(() => {
 
 <style scoped>
 .filters-section {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  margin-bottom: 2rem;
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--color-gray-200);
+  padding: var(--space-8);
+  margin-bottom: var(--space-8);
 }
 
-.filters-section h2 {
-  color: #2c3e50;
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
+.filters-header {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+  transition: var(--transition-colors);
+}
+
+.filters-header:hover {
+  opacity: 0.8;
+}
+
+.filters-header:focus {
+  outline: none;
+}
+
+.filters-header:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
+
+.chevron-icon {
+  transition: transform 0.2s ease;
+  color: var(--color-primary);
+}
+
+.chevron-rotated {
+  transform: rotate(180deg);
+}
+
+.filters-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.2s ease;
+  opacity: 0;
+}
+
+.filters-open {
+  max-height: 1000px;
+  opacity: 1;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.filters-header h2 {
+  color: var(--color-primary);
+  font-size: var(--font-size-2xl);
+  margin: 0;
+}
+
+.active-filters-badge {
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-full);
+  min-width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 .activity-filters {
@@ -226,53 +351,54 @@ const resetDescription = computed(() => {
 
 .filter-group {
   border: none;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 var(--space-8) 0;
   padding: 0;
 }
 
+.filter-group:last-of-type {
+  margin-bottom: var(--space-6);
+}
+
 .filter-group legend {
-  font-weight: 600;
-  color: #2d3748;
-  font-size: 1.1rem;
-  margin-bottom: 0.75rem;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-800);
+  margin-bottom: var(--space-4);
   padding: 0;
 }
 
 .filter-options {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: center;
+  flex-direction: column;
+  gap: var(--space-3);
 }
 
 .filter-option {
   display: flex;
   align-items: center;
-  background: #f8f9fa;
-  border: 2px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
   cursor: pointer;
-  transition: all 0.2s ease;
-  min-width: 120px;
-  justify-content: center;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  transition: var(--transition-colors);
+  border: 2px solid transparent;
 }
 
 .filter-option:hover {
-  background: #e8f4f8;
-  border-color: #bee3f8;
+  background: var(--color-gray-100);
 }
 
 .filter-option:has(input:checked) {
-  background: #e6fffa;
-  border-color: #4fd1c7;
-  color: #234e52;
-  font-weight: 500;
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-primary-dark);
+  font-weight: var(--font-weight-medium);
 }
 
 .filter-option input[type="radio"] {
-  margin-right: 0.5rem;
-  accent-color: #4fd1c7;
+  margin-right: var(--space-3);
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
 }
 
 .filter-label {
@@ -318,19 +444,29 @@ const resetDescription = computed(() => {
 }
 
 .button-secondary {
-  background: #e2e8f0;
-  color: #4a5568;
-  border: 1px solid #cbd5e0;
+  background: var(--color-white);
+  color: var(--color-gray-700);
+  border-color: var(--color-gray-300);
 }
 
 .button-secondary:hover {
-  background: #cbd5e0;
-  color: #2d3748;
+  background: var(--color-gray-50);
+  border-color: var(--color-gray-400);
   transform: translateY(-1px);
 }
 
 .button-secondary:active {
   transform: translateY(0);
+}
+
+.button-secondary:focus {
+  outline: none;
+}
+
+.button-secondary:focus-visible {
+  /* Only show focus outline for keyboard navigation (not mouse clicks) */
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .sr-only {
@@ -381,7 +517,18 @@ const resetDescription = computed(() => {
 
 /* Focus styles for accessibility */
 .filter-option:has(input:focus) {
-  outline: 2px solid #4299e1;
+  /* Remove the extra outline on focus to avoid double borders */
+  outline: none;
+}
+
+.filter-option input[type="radio"]:focus {
+  /* Remove focus outline completely */
+  outline: none;
+}
+
+.filter-option input[type="radio"]:focus-visible {
+  /* Only show focus outline for keyboard navigation (not mouse clicks) */
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
