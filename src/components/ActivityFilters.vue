@@ -131,7 +131,7 @@ const isOpen = ref(false)
 interface Props {
   filters: ActivityFilters
   availableCount: number
-  activities?: Activity[]
+  activities?: readonly Activity[]
 }
 
 // Component Events  

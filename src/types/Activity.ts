@@ -6,7 +6,7 @@ export interface Activity {
   type: "fun" | "chores";
   description?: string;
   difficulty?: "easy" | "medium" | "hard";
-  materials?: string[];
+  materials?: readonly string[];
 }
 
 export type ActivityType = Activity["type"];

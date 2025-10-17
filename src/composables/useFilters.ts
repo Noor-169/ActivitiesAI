@@ -32,7 +32,7 @@ function saveFiltersToStorage(filters: ActivityFilters): void {
   }
 }
 
-export function useFilters(activities: Ref<readonly Activity[]>) {
+export function useFilters(activities: Ref<readonly Activity[], readonly Activity[]>)  {
   const filters = ref<ActivityFilters>(loadFiltersFromStorage());
 
   const filteredActivities = computed(() => {

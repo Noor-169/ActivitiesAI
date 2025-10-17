@@ -50,7 +50,7 @@ export function useActivities() {
     }
     
     const randomIndex = Math.floor(Math.random() * filteredActivities.length);
-    return filteredActivities[randomIndex];
+    return filteredActivities[randomIndex] ?? null;
   };
 
   // Fallback activities for offline or error scenarios
