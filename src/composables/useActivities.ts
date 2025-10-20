@@ -12,7 +12,7 @@ export function useActivities() {
       isLoading.value = true;
       error.value = null;
 
-      const response = await fetch('/data/activities.json');
+      const response = await fetch(`${import.meta.env.BASE_URL}data/activities.json`);
       
       if (!response.ok) {
         throw new Error(`Failed to fetch activities: ${response.status} ${response.statusText}`);
