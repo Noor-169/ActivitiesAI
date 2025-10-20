@@ -29,9 +29,9 @@
           <span class="activity-badge activity-badge--duration">
             {{ formatDuration(activity.duration) }}
           </span>
-          <span class="activity-badge activity-badge--type">
+          <!-- <span class="activity-badge activity-badge--type">
             {{ formatActivityType(activity.type) }}
-          </span>
+          </span> -->
           <!-- <span 
             v-if="activity.difficulty" 
             class="activity-badge activity-badge--difficulty"
@@ -49,6 +49,7 @@
               {{ material }}
             </li>
           </ul>
+          
         </div>
       </div>
 
@@ -310,10 +311,13 @@ const handleGetActivity = (): void => {
   box-shadow: none;
 }
 
+.button:focus {
+  outline: none;
+}
+
 .button:focus-visible {
   outline: none;
-  box-shadow: var(--focus-ring);
-  outline-offset: var(--focus-ring-offset);
+  box-shadow: var(--shadow-lg), 0 0 0 3px rgba(74, 144, 226, 0.5);
 }
 
 .sr-only {

@@ -7,14 +7,14 @@
       "type": "fun",
       "description": "Pak 'm vast, probeer iets, doe wat je wilt!",
       "difficulty": "medium",
-      "materials": ["viool"]
+      "materials": []
     },
     {
       "id": 2,
-      "title": "Een willekeurig nieuw boek lezen",
+      "title": "Pagina of hoofdstuk uit een willekeurig nieuw boek lezen",
       "duration": 20,
       "type": "fun",
-      "description": "Neem en lees",
+      "description": "",
       "difficulty": "easy"
     },
     {
@@ -22,7 +22,7 @@
       "title": "Lees verder in een boek waar je al in bezig bent",
       "duration": 20,
       "type": "fun",
-      "description": "Pak de draad weer op waar je gebleven was",
+      "description": "",
       "difficulty": "easy"
     },
     {
@@ -30,9 +30,9 @@
       "title": "Hangen aan hangboard",
       "duration": 7,
       "type": "fun",
-      "description": "Vingerkracht opbouwen met hangboard oefeningen",
+      "description": "",
       "difficulty": "hard",
-      "materials": ["hangboard"]
+      "materials": []
     },
     {
       "id": 5,
@@ -52,10 +52,10 @@
     },
     {
       "id": 7,
-      "title": "Naar de bioscoop gaan",
+      "title": "Naar de bioscoop",
       "duration": 180,
       "type": "fun",
-      "description": "Ga naar buiten, dat zal je goed doen!",
+      "description": "",
       "difficulty": "easy"
     },
     {
@@ -63,7 +63,7 @@
       "title": "South Park aflevering kijken",
       "duration": 25,
       "type": "fun",
-      "description": "Altijd goed.",
+      "description": "",
       "difficulty": "easy"
     },
     {
@@ -79,7 +79,7 @@
       "title": "Middellange wandeling maken",
       "duration": 25,
       "type": "fun",
-      "description": "Reset jezelf!",
+      "description": "",
       "difficulty": "easy"
     },
     {
@@ -87,7 +87,7 @@
       "title": "Lange wandeling maken",
       "duration": 120,
       "type": "fun",
-      "description": "Reset jezelf!",
+      "description": "",
       "difficulty": "easy"
     },
     {
@@ -95,9 +95,9 @@
       "title": "In dagboek schrijven",
       "duration": 15,
       "type": "fun",
-      "description": "Laat je hoofd leegstromen",
+      "description": "",
       "difficulty": "easy",
-      "materials": ["dagboek", "pen"]
+      "materials": []
     },
     {
       "id": 13,
@@ -106,25 +106,25 @@
       "type": "fun",
       "description": "Als je niet weet wat je moet doen, zoek dan een oefening",
       "difficulty": "medium",
-      "materials": ["notitieboek", "pen"]
+      "materials": []
     },
     {
       "id": 14,
       "title": "Kort verhaal schrijven",
       "duration": 45,
       "type": "fun",
-      "description": "Maak een compleet kort verhaal van begin tot eind. Gewoon doen!",
+      "description": "Maak een compleet kort verhaal van begin tot eind.",
       "difficulty": "medium",
-      "materials": ["computer", "notitieboek"]
+      "materials": []
     },
     {
       "id": 15,
       "title": "Familie of vrienden bellen",
       "duration": 20,
       "type": "fun",
-      "description": "Verbind je",
+      "description": "",
       "difficulty": "easy",
-      "materials": ["telefoon"]
+      "materials": []
     },
     {
       "id": 16,
@@ -139,7 +139,7 @@
       "title": "Drankje doen met iemand",
       "duration": 90,
       "type": "fun",
-      "description": "Ga naar buiten!",
+      "description": "",
       "difficulty": "easy"
     },
     {
@@ -147,9 +147,9 @@
       "title": "Yogasessie",
       "duration": 30,
       "type": "fun",
-      "description": "Bijvoorbeeld een filmpje van CaroYoga",
+      "description": "",
       "difficulty": "easy",
-      "materials": ["yogamat"]
+      "materials": []
     },
     {
       "id": 19,
@@ -158,85 +158,85 @@
       "type": "fun",
       "description": "Rebirthen.",
       "difficulty": "medium",
-      "materials": ["zwemkleding", "toegang tot zwembad"]
+      "materials": []
     },
     {
       "id": 20,
       "title": "Engels woordenboek lezen",
       "duration": 15,
       "type": "fun",
-      "description": "leuk!",
+      "description": "",
       "difficulty": "easy",
-      "materials": ["woordenboek"]
+      "materials": []
     },
     {
       "id": 21,
       "title": "Spaans woordenboek lezen",
       "duration": 15,
       "type": "fun",
-      "description": "leuk!",
+      "description": "",
       "difficulty": "easy",
-      "materials": ["Spaans woordenboek"]
+      "materials": []
     },
     {
       "id": 22,
-      "title": "Catalaans woordenboek bestuderen",
+      "title": "Catalaans woordenboek lezen",
       "duration": 15,
       "type": "fun",
-      "description": "leuk!",
+      "description": "",
       "difficulty": "easy",
-      "materials": ["Catalaans woordenboek"]
+      "materials": []
     },
     {
       "id": 23,
       "title": "Naar Catalaanse podcast luisteren",
       "duration": 10,
       "type": "fun",
-      "description": "bijv. couchpolyglot",
+      "description": "",
       "difficulty": "medium",
-      "materials": ["koptelefoon"]
+      "materials": []
     },
     {
       "id": 24,
-      "title": "Arabische methode volgen",
+      "title": "Een beetje Arabisch leren",
       "duration": 30,
       "type": "fun",
-      "description": "Al Kitaab doornemen of googleen. ",
+      "description": "Al Kitaab, YouTube, ...",
       "difficulty": "medium",
-      "materials": ["Arabisch tekstboek", "iMac (voor cd-driver)"]
+      "materials": []
     },
     {
       "id": 25,
       "title": "Gaelic grammatica opzoeken",
       "duration": 30,
       "type": "fun",
-      "description": "Duik in de Gaelic grammaticaregels",
+      "description": "",
       "difficulty": "medium",
-      "materials": ["het internet"]
+      "materials": []
     },
     {
       "id": 26,
       "title": "Taalvideo zoeken op YouTube",
       "duration": 20,
       "type": "fun",
-      "description": "Zoek antwoorden op vragen die al lang in je hoofd rondspoken",
+      "description": "",
       "difficulty": "easy",
-      "materials": ["computer", "internet"]
+      "materials": []
     },
     {
       "id": 27,
-      "title": "20 minuten mediteren",
+      "title": "Mediteren",
       "duration": 20,
       "type": "fun",
-      "description": "Oefen mindfulness met een langere meditatiesessie",
+      "description": "",
       "difficulty": "medium"
     },
     {
       "id": 28,
-      "title": "10 minuten mediteren",
+      "title": "Mediteren",
       "duration": 10,
       "type": "fun",
-      "description": "Neem een korte pauze met een korte meditatie",
+      "description": "",
       "difficulty": "hard"
     },
     {
@@ -244,25 +244,25 @@
       "title": "Willekeurig dagboekfragment lezen",
       "duration": 10,
       "type": "fun",
-      "description": "Maak contact met verleden-jij door een oude dagboeknotitie te lezen (max 10 min!)",
+      "description": "10 minuten max!",
       "difficulty": "easy",
-      "materials": ["oud dagboek"]
+      "materials": []
     },
     {
       "id": 30,
       "title": "Geometrische vormen tekenen",
       "duration": 15,
       "type": "fun",
-      "description": "Doe gewoon wat je het liefst doet als je een potlood oppakt!",
+      "description": "Doe gewoon wat je het liefst doet als je een potlood in je handen hebt",
       "difficulty": "medium",
-      "materials": ["papier", "potlood"]
+      "materials": []
     },
     {
       "id": 31,
       "title": "Gebarentaal video zoeken",
       "duration": 20,
       "type": "fun",
-      "description": "Leer wat basisgebarentaal van online video's, ASL of NGT",
+      "description": "Leer wat basisgebarentaal, ASL of NGT",
       "difficulty": "medium"
     },
     {
@@ -270,7 +270,7 @@
       "title": "Stem bubbelen en improvisatie",
       "duration": 10,
       "type": "fun",
-      "description": "Oefen vocale oefeningen: 3 sessies van 1 minuut bubbelen + stem improvisatie",
+      "description": "3 keer 1 minuut bubbelen + stem improvisatie",
       "difficulty": "medium"
     },
     {
@@ -278,16 +278,16 @@
       "title": "Muziektheorie met Perfect Ear",
       "duration": 10,
       "type": "fun",
-      "description": "Scherp je muzikale vaardigheden aan met gehoortraining",
+      "description": "",
       "difficulty": "medium",
-      "materials": ["Perfect Ear app"]
+      "materials": []
     },
     {
       "id": 34,
       "title": "Muziek aanzetten en dansen",
       "duration": 10,
       "type": "fun",
-      "description": "Laat je gaan en dans op je favoriete nummer",
+      "description": "1 of 2 nummers",
       "difficulty": "easy"
     },
     {
@@ -295,7 +295,7 @@
       "title": "Concert bijwonen",
       "duration": 240,
       "type": "fun",
-      "description": "welk genre dan ook",
+      "description": "mag ook klassiek!",
       "difficulty": "easy"
     },
     {
@@ -303,33 +303,33 @@
       "title": "Contact opnemen met iemand",
       "duration": 10,
       "type": "fun",
-      "description": "Stuur een bericht of reageer op iemand waar je al een tijdje mee wilde praten",
-      "difficulty": "easy",
-      "materials": ["telefoon"]
+      "description": "Stuur een bericht of reageer op iemand",
+      "difficulty": "hard",
+      "materials": []
     },
     {
       "id": 37,
-      "title": "Super korte schrijf improvisatie",
+      "title": "Super korte schrijfimprovisatie",
       "duration": 5,
       "type": "fun",
-      "description": "Snelle creatieve schrijfuitbarsting - laat de woorden stromen",
+      "description": "Snelle schrijfuitbarsting",
       "difficulty": "easy",
-      "materials": ["papier", "pen", "tafel"]
+      "materials": []
     },
     {
       "id": 38,
-      "title": "Nieuwe vaardigheid online leren",
+      "title": "Online tutorial volgen van iets willekeurigs",
       "duration": 45,
       "type": "fun",
-      "description": "Bekijk een tutorial en leer iets compleet nieuws",
+      "description": "",
       "difficulty": "medium"
     },
     {
       "id": 39,
-      "title": "Diep ademhalen oefenen",
+      "title": "Buikademhaling",
       "duration": 5,
       "type": "fun",
-      "description": "Neem 5 minuten om te focussen op je ademhaling en jezelf te centreren",
+      "description": "",
       "difficulty": "easy"
     },
     {
@@ -337,84 +337,84 @@
       "title": "Rekken voor flexibiliteit",
       "duration": 15,
       "type": "fun",
-      "description": "Milde rekoefeningen om spanning los te laten en flexibiliteit te verbeteren",
+      "description": "",
       "difficulty": "easy"
     },
     {
       "id": 41,
-      "title": "Naar podcast luisteren",
+      "title": "Podcast opzetten",
       "duration": 30,
       "type": "fun",
-      "description": "Leer iets nieuws of laat je vermaken",
+      "description": "",
       "difficulty": "easy",
-      "materials": ["koptelefoon"]
+      "materials": []
     },
     {
       "id": 42,
-      "title": "Muziekinstrument bespelen",
+      "title": "Muziekinstrument oefenen, incl. stem",
       "duration": 25,
       "type": "fun",
-      "description": "Oefen op elk instrument dat je kent of aan het leren bent, inclusief je stem",
+      "description": "",
       "difficulty": "medium",
-      "materials": ["muziekinstrument"]
+      "materials": []
     },
     {
       "id": 43,
       "title": "Schetsen of krabbelen",
       "duration": 20,
       "type": "fun",
-      "description": "Laat je creativiteit stromen met wat low-profile geteken",
+      "description": "Low-profile tekenen",
       "difficulty": "easy",
-      "materials": ["papier", "potlood"]
+      "materials": []
     },
     {
       "id": 44,
-      "title": "Onderwerp van interesse onderzoeken",
+      "title": "Google-deep-dive iets wat je je vandaag afvroeg",
       "duration": 20,
       "type": "fun",
-      "description": "Duik diep in iets waar je al een tijdje nieuwsgierig naar was",
+      "description": "",
       "difficulty": "easy"
     },
     {
       "id": 45,
-      "title": "Je week plannen",
+      "title": "Weekplanning maken",
       "duration": 25,
       "type": "fun",
-      "description": "Organiseer je aankomende week met intentie en doel",
+      "description": "",
       "difficulty": "easy",
-      "materials": ["kalender", "planner"]
+      "materials": []
     },
     {
       "id": 46,
-      "title": "Hobby beoefenen",
+      "title": "Filmpje kijken over programmeren",
       "duration": 40,
       "type": "fun",
-      "description": "Besteed tijd aan welke hobby dan ook die je vreugde brengt",
+      "description": "",
       "difficulty": "medium"
     },
     {
       "id": 47,
-      "title": "Educatieve video's kijken",
+      "title": "Spelen met fieldrecordings in Ableton",
       "duration": 30,
       "type": "fun",
-      "description": "Leer iets nieuws door educatieve content online",
-      "difficulty": "easy"
+      "description": "",
+      "difficulty": "hard"
     },
     {
       "id": 48,
-      "title": "Korte brief of ansichtkaart schrijven",
+      "title": "Brief of kaartje sturen",
       "duration": 30,
       "type": "fun",
-      "description": "Stuur handgeschreven berichtjes naar vrienden of familie",
+      "description": "",
       "difficulty": "easy",
-      "materials": ["papier", "pen", "postzegels"]
+      "materials": []
     },
     {
       "id": 49,
-      "title": "Foto's organiseren",
+      "title": "Foto's organiseren/opruimen",
       "duration": 30,
       "type": "chores",
-      "description": "Sorteer en organiseer je digitale foto's",
+      "description": "",
       "difficulty": "easy"
     },
     {
@@ -424,7 +424,7 @@
       "type": "chores",
       "description": "Doe je huisgenoten en jezelf een plezier",
       "difficulty": "easy",
-      "materials": ["dweil", "schoonmaakmiddel"]
+      "materials": []
     },
     {
       "id": 51,
@@ -433,23 +433,23 @@
       "type": "chores",
       "description": "Maak foto's en plaats een advertentie voor iets dat je al een tijdje wilde verkopen",
       "difficulty": "easy",
-      "materials": ["camera", "internet"]
+      "materials": []
     },
     {
       "id": 52,
       "title": "Planten water geven",
       "duration": 10,
       "type": "chores",
-      "description": "Geef je binnen- of buitenplanten het water dat ze nodig hebben",
+      "description": "",
       "difficulty": "easy",
-      "materials": ["gieter"]
+      "materials": []
     },
     {
       "id": 53,
-      "title": "E-mail inbox opruimen",
+      "title": "E-mailinbox opruimen",
       "duration": 15,
       "type": "chores",
-      "description": "Beantwoord e-mails, verwijder onnodige e-mails en organiseer belangrijke",
+      "description": "",
       "difficulty": "easy"
     },
     {
@@ -457,7 +457,7 @@
       "title": "Snelle opruimsessie",
       "duration": 15,
       "type": "chores",
-      "description": "Besteed 15 minuten aan het terugzetten van spullen op hun plek",
+      "description": "",
       "difficulty": "easy"
     },
     {
@@ -465,7 +465,7 @@
       "title": "Bergruimte organiseren",
       "duration": 15,
       "type": "chores",
-      "description": "Ruim je bergruimte of kast op",
+      "description": "",
       "difficulty": "medium"
     },
     {
@@ -473,26 +473,26 @@
       "title": "Badkamer schoonmaken",
       "duration": 25,
       "type": "chores",
-      "description": "Geef je badkamer een snelle schoonmaakbeurt",
+      "description": "",
       "difficulty": "medium",
-      "materials": ["schoonmaakspullen"]
+      "materials": []
     },
     {
       "id": 57,
       "title": "Eén lade organiseren",
       "duration": 10,
       "type": "chores",
-      "description": "Kies één lade en organiseer deze volledig",
+      "description": "",
       "difficulty": "easy"
     },
     {
       "id": 58,
       "title": "Was doen",
-      "duration": 45,
+      "duration": 10,
       "type": "chores",
-      "description": "Was, droog en vouw een lading wasgoed",
+      "description": "",
       "difficulty": "easy",
-      "materials": ["wasmiddel"]
+      "materials": []
     },
     {
       "id": 59,
@@ -501,14 +501,14 @@
       "type": "chores",
       "description": "",
       "difficulty": "easy",
-      "materials": ["stofzuiger"]
+      "materials": []
     },
     {
       "id": 60,
       "title": "Budget of financiën bijwerken",
       "duration": 20,
       "type": "chores",
-      "description": "Bekijk je uitgaven en werk je budget bij",
+      "description": "",
       "difficulty": "medium"
     },
     {
@@ -516,15 +516,15 @@
       "title": "Gezonde maaltijden plannen",
       "duration": 35,
       "type": "chores",
-      "description": "Plan voedzame maaltijden voor de komende dagen",
+      "description": "",
       "difficulty": "medium"
     },
     {
       "id": 62,
-      "title": "Belangrijke bestanden backup maken",
+      "title": "Backup maken belangrijke bestanden",
       "duration": 25,
       "type": "chores",
-      "description": "Zorg dat je belangrijke documenten en foto's veilig zijn opgeslagen",
+      "description": "",
       "difficulty": "medium"
     }
   ]
